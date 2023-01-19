@@ -8,22 +8,22 @@ class App extends Component {
     this.state = {
       users: [
         {
-          id: 1,
+          id: 3,
           firstName: "Brad",
           lastName: "Pitt",
         },
         {
-          id: 2,
+          id: 4,
           firstName: "Tom",
           lastName: "Rot",
         },
         {
-          id: 3,
+          id: 1,
           firstName: "Jim",
           lastName: "Carry",
         },
         {
-          id: 4,
+          id: 2,
           firstName: "Rob",
           lastName: "Qwerty",
         },
@@ -33,16 +33,39 @@ class App extends Component {
           lastName: "Kaprio",
         },
       ],
+      isDirectionById: true,      
     };
   }
+  sortUsersById = () => {
+    //отримати масив юзерів
+    const { users, isDirectionById } = this.state;
+    //робимо копію, бо стан не можна змінювати!!!
+    const usersCopy = [...users];
+    //відсортувати масив
+    usersCopy.sort((curr, next) => {
+      return isDirectionById ? curr.id - next.id : next.id - curr.id;
+    });
+    //записати відсортований масив у стан
+    //this.setState({users:users})
+    this.setState({ users: usersCopy, isDirectionById: !isDirectionById });
+  };
   render() {
-    const { users } = this.state;
-    const liArray = users.map(({ firstName, lastName }, index) => (
-      <li key={index}>
-        <Ciao username={`${firstName} ${lastName}`} />
+    const { users, isDirectionById } = this.state;
+    const liArray = users.map(({ firstName, lastName, id }, index) => (
+      <li key={id}>
+        <Ciao username={`${id}: ${firstName} ${lastName}`} />
       </li>
     ));
-    return <ul>{liArray}</ul>;
+    return (
+      <>
+        <p>
+          <button onClick={this.sortUsersById}>
+            sort by id {isDirectionById ? "right" : "revert"}
+          </button>
+        </p>
+        <ul>{liArray}</ul>
+      </>
+    );
   }
 }
 
