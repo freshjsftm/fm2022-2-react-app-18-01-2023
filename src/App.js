@@ -1,55 +1,26 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import Ciao from "./components/Ciao";
 
 function App() {
-  // return (
-  //   <div className="App">
-  //     <header className="App-header">
-  //       <img src={logo} className="App-logo" alt="logo" />
-  //       <p>
-  //         Edit <code>src/App.js</code> and save to reload.
-  //       </p>
-  //       <a
-  //         className="App-link"
-  //         href="https://reactjs.org"
-  //         target="_blank"
-  //         rel="noopener noreferrer"
-  //       >
-  //         Learn React
-  //       </a>
-  //     </header>
-  //   </div>
-  // );
-  return React.createElement(
-    "div",
-    { className: "App" },
-    React.createElement(
-      "header",
-      { className: "App-header" },
-      React.createElement("img", {
-        src: logo,
-        className: "App-logo",
-        alt: "logo",
-      }),
-      React.createElement(
-        "p",
-        {},
-        "Edit ",
-        React.createElement("code", {}, "src/App.js"),
-        " and save to reload."
-      ),
-      React.createElement(
-        "a",
-        {
-          className: "App-link",
-          href: "https://reactjs.org",
-          target: "_blank",
-          rel: "noopener noreferrer",
-        },
-        "Learn React"
-      )
-    )
+  const user = {
+    firstName: "Brad",
+    lastName: "Pitt",
+    avatar: "http://localhost:3000/favicon.ico",
+  };
+  return (
+    <>
+      <h1 className="heading" title="JSX">
+        Hi, JSX!
+      </h1>
+      <Ciao
+        username={`${user.firstName} ${user.lastName}`}
+        photo={user.avatar}
+      />
+      <Ciao username="Tom Rot" />
+      <Ciao username="Steev" />
+      <Ciao username="Tom Cruase" />
+    </>
   );
 }
 
