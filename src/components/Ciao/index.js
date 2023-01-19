@@ -9,13 +9,15 @@ class Ciao extends Component {
     this.setState({isHi: !this.state.isHi})
   }
   render() {
-    const { username, photo} = this.props;
+    const { username } = this.props;
     const {isHi} = this.state;
     const ciaoWord = isHi ? 'Hi' : 'Bye';
+    // if(isHi===false){
+    //   return <p>qwerty</p>
+    // }
     return (
       <h2>
         {ciaoWord}, {username}! 
-        <img src={photo} alt={username} />
         <button onClick={this.handlerBtn}>say {isHi ? 'bye' : 'hi'}</button>
       </h2>
     );
