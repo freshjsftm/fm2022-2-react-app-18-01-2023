@@ -33,20 +33,18 @@ class App extends Component {
           lastName: "Kaprio",
         },
       ],
-      isDirectionById: true,      
+      isDirectionById: true,
     };
   }
+  //додати новий стан для напрямку сортування по імені
+  //додати функцію сортування по імені
+  //додати кнопку, яка буде викликати сортування
   sortUsersById = () => {
-    //отримати масив юзерів
     const { users, isDirectionById } = this.state;
-    //робимо копію, бо стан не можна змінювати!!!
     const usersCopy = [...users];
-    //відсортувати масив
     usersCopy.sort((curr, next) => {
       return isDirectionById ? curr.id - next.id : next.id - curr.id;
     });
-    //записати відсортований масив у стан
-    //this.setState({users:users})
     this.setState({ users: usersCopy, isDirectionById: !isDirectionById });
   };
   render() {
