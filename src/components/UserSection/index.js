@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import UserList from './UserList';
-import SelectedUserList from './SelectedUserList';
+import React, { Component } from "react";
+import UserList from "./UserList";
+import SelectedUserList from "./SelectedUserList";
 const dbUsers = [
   {
     id: 3,
@@ -35,22 +35,17 @@ class UserSection extends Component {
       users: dbUsers.map((user) => ({ ...user, isSelected: false })),
     };
   }
-  userSelect = (id) => {
-    const { users } = this.state;
-    this.setState({
-      users: users.map((user) => ({
-        ...user,
-        isSelected: user.id === id ? !user.isSelected : user.isSelected,
-      })),
-    });
+
+  setUsersSelected = (newUsers) => {
+    this.setState({ users: newUsers });
   };
-  
+
   render() {
     const { users } = this.state;
     return (
       <>
-        <SelectedUserList users={users}/>
-        <UserList users={users} userSelect={this.userSelect}/>
+        <SelectedUserList users={users} />
+        <UserList users={users} setUsersSelected={this.setUsersSelected} />
       </>
     );
   }
