@@ -1,5 +1,6 @@
 import { Component } from "react";
-import CiaoList from "../CiaoList";
+import CiaoList from "./CiaoList";
+import CiaoSorted from "./CiaoSorted";
 
 class CiaoSection extends Component {
   constructor(props) {
@@ -48,11 +49,7 @@ class CiaoSection extends Component {
     const { users, isDirectionById } = this.state;
     return (
       <>
-        <p>
-          <button onClick={this.sortUsersById}>
-            sort by id {isDirectionById ? "right" : "revert"}
-          </button>
-        </p>
+        <CiaoSorted isDirectionById={isDirectionById}/>
         <CiaoList users={users}/>
       </>
     );
