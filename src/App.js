@@ -1,6 +1,6 @@
 import { Component } from "react";
 import "./App.css";
-import UserList from "./components/UserList";
+import UserSection from "./components/UserSection";
 //import CiaoSection from "./components/CiaoSection";
 
 class App extends Component {
@@ -10,10 +10,9 @@ class App extends Component {
   // }
   
   render() {
-    return <UserList />
+    return <UserSection />
   }
 }
 
 export default App;
 
-// users.map((user)=>component)

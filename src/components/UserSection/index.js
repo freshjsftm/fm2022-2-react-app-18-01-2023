@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import UserCard from "../UserCard";
-
+import React, { Component } from 'react';
+import UserList from './UserList';
+import SelectedUserList from './SelectedUserList';
 const dbUsers = [
   {
     id: 3,
@@ -28,8 +28,7 @@ const dbUsers = [
     lastName: "Kaprio",
   },
 ];
-
-class UserList extends Component {
+class UserSection extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -45,16 +44,16 @@ class UserList extends Component {
       })),
     });
   };
-  mapUsers = (user) => <UserCard key={user.id} user={user} userSelect={this.userSelect}/>;
+  
   render() {
     const { users } = this.state;
     return (
-      <section>
-        <h2>Users list</h2>
-        {users.map(this.mapUsers)}
-      </section>
+      <>
+        <SelectedUserList users={users}/>
+        <UserList users={users} userSelect={this.userSelect}/>
+      </>
     );
   }
 }
 
-export default UserList;
+export default UserSection;
