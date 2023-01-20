@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Ciao from '../Ciao';
 
 class CiaoList extends Component {
-  mapUsers = ({ firstName, lastName, id }, index) => (
+  mapUsers = ({ firstName, lastName, id }) => (
     <Ciao key={id} username={`${id}: ${firstName} ${lastName}`} />
   );
   render() {

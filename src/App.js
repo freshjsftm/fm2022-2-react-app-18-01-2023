@@ -1,6 +1,7 @@
 import { Component } from "react";
 import "./App.css";
-import CiaoSection from "./components/CiaoSection";
+import UserList from "./components/UserList";
+//import CiaoSection from "./components/CiaoSection";
 
 class App extends Component {
   // constructor(props) {
@@ -9,7 +10,7 @@ class App extends Component {
   // }
   
   render() {
-    return <CiaoSection />
+    return <UserList />
   }
 }
 

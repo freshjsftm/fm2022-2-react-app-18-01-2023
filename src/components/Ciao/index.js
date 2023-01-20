@@ -12,9 +12,6 @@ class Ciao extends Component {
     const { username } = this.props;
     const {isHi} = this.state;
     const ciaoWord = isHi ? 'Hi' : 'Bye';
-    // if(isHi===false){
-    //   return <p>qwerty</p>
-    // }
     return (
       <h2>
         {ciaoWord}, {username}! 
