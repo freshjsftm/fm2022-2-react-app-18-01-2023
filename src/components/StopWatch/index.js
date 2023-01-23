@@ -7,34 +7,40 @@ class StopWatch extends Component {
       count: 0,
     };
     this.intervalId = null;
-    //this.start()
-    console.log("constructor");
   }
+  tick = () => {
+    this.setState({ count: this.state.count + 1 });
+  };
   start = () => {
-    this.intervalId = setInterval(() => {
-      this.setState({ count: this.state.count + 1 });
-    }, 1000);
+    if (this.intervalId === null) {
+      this.intervalId = setInterval(this.tick, 1000);
+    }
+  };
+  stop = () => {
+    clearInterval(this.intervalId);
+    this.intervalId = null;
+  };
+  reset = () => {
+    this.stop();
+    this.setState({ count: 0 });
   };
   componentDidMount() {
-    console.log("componentDidMount");
-    this.start();
+    //для побочних ефектів!!!
+    //this.start();
   }
-  componentDidUpdate() {
-    console.log("componentDidUpdate");
-  }
+  componentDidUpdate() {}
   componentWillUnmount() {
-    console.log("componentWillUnmount");
-    clearInterval(this.intervalId);
+    //для очистки від побочних ефектів!!!
+    this.stop();
   }
   render() {
-    console.log("render");
     const { count } = this.state;
-    //this.start()
-    //this.setState({ count: Math.random() });
     return (
       <div>
         <h2>count: {count}</h2>
         <button onClick={this.start}>start</button>
+        <button onClick={this.stop}>stop</button>
+        <button onClick={this.reset}>reset</button>
       </div>
     );
   }
