@@ -1,13 +1,15 @@
-import { Component } from "react";
+import React, {useState} from "react";
 import "./App.css";
-import CiaoSection from "./components/CiaoSection";
+import StopWatch from "./components/StopWatch";
 
-class App extends Component {
- 
-  render() {
-    return <CiaoSection />
-  }
+function App() {
+  const [isVisible, setIsVisible] = useState(true);
+  return (
+    <>
+    <button onClick={()=>{setIsVisible(!isVisible)}}>isVisible</button>
+      {isVisible?<StopWatch />:null}
+    </>
+  );
 }
 
 export default App;
-
