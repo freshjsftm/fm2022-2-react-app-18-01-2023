@@ -4,3 +4,14 @@
   width: 350px;
   margin: auto;
 }
+.input{
+  margin: 5px 0;
+  background-color: pink;
+  font-size: 30px;
+}
+.valid{
+  background-color: lightgreen;
+}
+.invalid{
+  background-color: red;
+}
