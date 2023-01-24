@@ -17,18 +17,26 @@ class SignInForm extends Component {
     event.target.reset();
     this.setState({ ...initialValues });
   };
-  // emailHandler = ({target:{value}}) => this.setState({email:value})
-  // passwordHandler = ({target:{value}}) => this.setState({password:value})
   inputHandler = ({ target: { name, value } }) =>
     this.setState({ [name]: value, [`is${name}Valid`]: !value.includes(" ") });
   render() {
     const { email, password, isemailValid, ispasswordValid } = this.state;
-    const emailClasses = `${styles.input} ${
-      isemailValid ? styles.valid : styles.invalid
-    }`;
-    const passClasses = `${styles.input} ${
-      ispasswordValid ? styles.valid : styles.invalid
-    }`;
+    //const emailClasses = [styles.input];
+    // if(isemailValid===false){
+    //   emailClasses.push(styles.invalid)
+    // }
+    //const passClasses = [styles.input];
+    // if(ispasswordValid===false){
+    //   passClasses.push(styles.invalid)
+    // }
+    const emailClasses = getClasses({
+      [styles.input]:true,
+      [styles.invalid]: !isemailValid
+    })
+    const passClasses = getClasses({
+      [styles.input]:true,
+      [styles.invalid]: !ispasswordValid
+    })
     return (
       <form className={styles.form} onSubmit={this.formHandler}>
         <input
@@ -54,3 +62,14 @@ class SignInForm extends Component {
 }
 
 export default SignInForm;
+/*
+{
+  ім'яКласу: умоваЗастосування
+}
+*/
+function getClasses(objClasses){
+  return Object.entries(objClasses)
+          .filter(([className, condition])=>condition)
+          .map(([className, condition])=>className)
+          .join(' ');
+}
