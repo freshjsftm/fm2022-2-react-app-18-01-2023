@@ -14,7 +14,7 @@ class Ciao extends Component {
     const { username } = this.props;
     const { isHi } = this.state;
     const ciaoWord = isHi ? "Hi" : "Bye";
-    console.log(styles)
+
     return (
       <article className={styles.container}>
         <h2>

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-//import './style.css';
 import styles from './StopWatch.module.css';
 
 class StopWatch extends Component {
@@ -31,8 +30,12 @@ class StopWatch extends Component {
     this.stop();
     this.setState({ time: new Date(0, 0, 0, 0, 0, 0, 0) });
   };
-  componentDidMount() {}
-  componentDidUpdate() {}
+  componentDidMount() {
+    //this.start()
+  }
+  componentDidUpdate() {
+    console.log('componentDidUpdate')
+  }
   componentWillUnmount() {
     this.stop();
   }

@@ -1,14 +1,11 @@
 import React from "react";
 import "./App.css";
-import StopWatch from "./components/StopWatch";
-import Ciao from "./components/CiaoSection/Ciao";
-
+import SignInForm from "./components/forms/SignInForm";
 
 function App() {
   return (
     <>
-      <StopWatch />
-      <Ciao username="Brad Pitt" />
+      <SignInForm />
     </>
   );
 }
