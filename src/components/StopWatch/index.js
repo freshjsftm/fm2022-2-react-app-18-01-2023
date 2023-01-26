@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import styles from './StopWatch.module.css';
+import { format, add } from "date-fns";
+import styles from "./StopWatch.module.css";
 
 class StopWatch extends Component {
   constructor(props) {
@@ -11,10 +12,11 @@ class StopWatch extends Component {
   }
   tick = () => {
     this.setState((state, props) => {
-      const { time } = state;
-      const newTime = new Date(time);
-      newTime.setSeconds(newTime.getSeconds() + 1);
-      return { time: newTime };
+      // const { time } = state;
+      // const newTime = new Date(time);
+      // newTime.setSeconds(newTime.getSeconds() + 1);
+      // return { time: newTime };
+      return { time: add(state.time, { seconds: 1 }) };
     });
   };
   start = () => {
@@ -34,7 +36,7 @@ class StopWatch extends Component {
     //this.start()
   }
   componentDidUpdate() {
-    console.log('componentDidUpdate')
+    //console.log('componentDidUpdate')
   }
   componentWillUnmount() {
     this.stop();
@@ -43,7 +45,8 @@ class StopWatch extends Component {
     const { time } = this.state;
     return (
       <article className={styles.container}>
-        <h2>{time.toLocaleTimeString("en-GB")}</h2>
+        <h2>{format(time, "HH mm ss")}</h2>
+        {/* <h2>{time.toLocaleTimeString("en-GB")}</h2> */}
         <button onClick={this.start}>start</button>
         <button onClick={this.stop}>stop</button>
         <button onClick={this.reset}>reset</button>
