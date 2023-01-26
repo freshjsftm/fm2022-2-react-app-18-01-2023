@@ -1,11 +1,23 @@
 import React from "react";
 import "./App.css";
-import SignInForm from "./components/forms/SignInForm";
+// import Ciao from "./components/CiaoSection/Ciao";
+import UserCard from "./components/UserSection/UserCard";
+import UserList from "./components/UserSection/UserList";
+
+const username = {
+  id: 1,
+  firstName: "Brad",
+  lastName: "Pitt",
+  isSelected: false,
+};
+const users = [username];
 
 function App() {
   return (
     <>
-      <SignInForm />
+      {/* <Ciao username={username.firstName} /> */}
+      <UserCard user={username} />
+      <UserList users={users} />
     </>
   );
 }

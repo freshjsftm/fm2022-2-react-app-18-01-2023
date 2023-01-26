@@ -1,8 +1,13 @@
 import { Component } from "react";
-//import "./style.css";
-import styles from './Ciao.module.css';
+import PropTypes from 'prop-types';
+import styles from "./Ciao.module.css";
 
 class Ciao extends Component {
+  /**
+   *
+   * @param {*} props
+   * @param {string} props.username
+   */
   constructor(props) {
     super(props);
     this.state = { isHi: true };
@@ -14,7 +19,9 @@ class Ciao extends Component {
     const { username } = this.props;
     const { isHi } = this.state;
     const ciaoWord = isHi ? "Hi" : "Bye";
-
+    // if (typeof username !== "string") {
+    //   console.error("type must be string");
+    // }
     return (
       <article className={styles.container}>
         <h2>
@@ -24,6 +31,10 @@ class Ciao extends Component {
       </article>
     );
   }
+}
+
+Ciao.propTypes = {
+  username: PropTypes.string.isRequired,
 }
 
 export default Ciao;

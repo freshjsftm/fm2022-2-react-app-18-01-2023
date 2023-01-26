@@ -11,7 +11,7 @@ class StopWatch extends Component {
   }
   tick = () => {
     this.setState((state, props) => {
-      const { time } = this.state;
+      const { time } = state;
       const newTime = new Date(time);
       newTime.setSeconds(newTime.getSeconds() + 1);
       return { time: newTime };

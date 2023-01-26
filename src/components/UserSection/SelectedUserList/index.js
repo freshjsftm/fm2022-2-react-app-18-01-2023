@@ -1,16 +1,22 @@
-import React, { Component } from "react";
+import React from "react";
+import { PropTypes } from "prop-types";
+import { userPropTypeShape, userDefault } from "../UserCard";
+function SelectedUserList(props) {
+  const mapSelectUsers = ({ id, firstName }) => <li key={id}>{firstName}</li>;
 
-class SelectedUserList extends Component {
-  mapSelectUsers = ({ id, firstName }) => <li key={id}>{firstName}</li>;
-  render() {
-    const { users } = this.props;
-    const selectUsers = users.filter((user) => user.isSelected);
-    return (
-      <header>
-        <ul>{selectUsers.map(this.mapSelectUsers)}</ul>
-      </header>
-    );
-  }
+  const { users } = props;
+  const selectUsers = users.filter((user) => user.isSelected);
+  return (
+    <header>
+      <ul>{selectUsers.map(mapSelectUsers)}</ul>
+    </header>
+  );
 }
+SelectedUserList.defaultProps = {
+  users: [userDefault],
+};
+SelectedUserList.propTypes = {
+  users: PropTypes.arrayOf(userPropTypeShape).isRequired,
+};
 
 export default SelectedUserList;
