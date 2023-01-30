@@ -1,21 +1,27 @@
 import React from "react";
-import FlexContainer from "./components/FlexContainer";
-import Ciao from './components/CiaoSection/Ciao';
+import Container from "./components/Grid/Container";
+import Row from "./components/Grid/Row";
+import Col from "./components/Grid/Col";
+import ImageWrapper from "./components/ImageWrapper";
 
-//реалізувати компонент FlexContainer
+//реалізувати компонент ImageWrapper
 function App(props) {
   return (
     <>
-      <FlexContainer justContent="space-between" alignItem="center" flexDir="column" style={{border:'5px solid red', margin: '20px auto'}} title="title" data-ref="qwerty">
-        <Ciao username='Tom'/>
-        <Ciao username='Tom'/>
-        <Ciao username='Tom'/>
-      </FlexContainer>
-      <FlexContainer justContent="center" alignItem="start" flexWrap="wrap">
-        <Ciao username='Tom'/>
-        <Ciao username='Tom'/>
-        <Ciao username='Tom'/>
-      </FlexContainer>
+      <Container>
+        <Row>
+          <Col colNum={6}>
+            <ImageWrapper height="50vh" >
+              <img src="https://media.wired.com/photos/5bb6accf0abf932caf294b18/master/pass/waves-730260985.jpg" alt="sea"/>
+            </ImageWrapper>
+          </Col>
+          <Col colNum={6}>
+            <ImageWrapper  height="50vh">
+              <img src="https://media.wired.com/photos/5bb6accf0abf932caf294b18/master/pass/waves-730260985.jpg" alt="sea"/>
+            </ImageWrapper>
+          </Col>
+        </Row> 
+      </Container>
     </>
   );
 }
