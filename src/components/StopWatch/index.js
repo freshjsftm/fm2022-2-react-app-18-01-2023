@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { format, add } from "date-fns";
-import styles from "./StopWatch.module.css";
+import styles from "./StopWatch.module.scss";
 
 class StopWatch extends Component {
   constructor(props) {
@@ -47,9 +47,9 @@ class StopWatch extends Component {
       <article className={styles.container}>
         <h2>{format(time, "HH mm ss")}</h2>
         {/* <h2>{time.toLocaleTimeString("en-GB")}</h2> */}
-        <button onClick={this.start}>start</button>
-        <button onClick={this.stop}>stop</button>
-        <button onClick={this.reset}>reset</button>
+        <button className={styles.container__btn} onClick={this.start}>start start start start start start</button>
+        <button className={styles.container__btn} onClick={this.stop}>stop</button>
+        <button className={styles.container__btn} onClick={this.reset}>reset</button>
       </article>
     );
   }

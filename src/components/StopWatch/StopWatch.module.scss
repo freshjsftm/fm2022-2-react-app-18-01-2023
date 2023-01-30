@@ -1,0 +1,42 @@
+@use 'src/common/styles/breakpoint' as b;
+@use 'src/common/styles/color' as c;
+@use 'src/common/styles/template' as *;
+@use 'src/common/styles/mixin' as m;
+// @import './../../common/styles/breakpoint';
+// @import './../../common/styles/color';
+// @import './../../common/styles/mixin';
+// @import './../../common/styles/template';
+.container {
+  //@extend %flex;
+  min-width: 300px;
+  width: 80%;
+  max-width: 600px;
+  margin: auto;
+  padding: 1em;
+  background-color: teal;
+  color: white;
+  text-align: center;
+  > h2 {
+    font-size: 3em;
+  }
+  &__btn {
+    @extend %one-line;
+    width: 100px;
+    padding: 0.8em;
+    background-color: c.$main-color;
+    @include m.border-style(5px, white, solid);
+    &:not(&:last-child) {
+      margin-right: 10px;
+    }
+  }
+}
+@media screen and (min-width: b.$sm) {
+  .container{
+    background-color: pink;
+  }
+}
+@media screen and (min-width: b.$md) {
+  .container{
+    background-color: red;
+  }
+}
