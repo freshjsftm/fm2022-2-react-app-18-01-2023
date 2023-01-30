@@ -1,5 +1,7 @@
 @import-normalize;
-
-.false{
+* {
+  box-sizing: border-box;
+}
+.false {
   display: none;
 }

@@ -1,8 +1,11 @@
 .container{
   display: flex;
   padding: 20px;
-  background-color: pink;
+  background-color: rgb(194, 255, 192);
   color: rgb(74, 19, 1);
 
   text-align: center;
+}
+.container > h2{
+  width: 100%;
 }

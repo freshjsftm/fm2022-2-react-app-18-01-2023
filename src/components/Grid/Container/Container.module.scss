@@ -1,0 +1,18 @@
+@use 'src/common/styles/breakpoint' as bp;
+.container{
+  max-width: 350px;
+  margin: auto;
+  background-color: pink;
+  @media screen and (min-width: bp.$sm) {
+    max-width: bp.$sm-max-width;
+  }
+  @media screen and (min-width: bp.$md) {
+    max-width: bp.$md-max-width;
+  }
+  @media screen and (min-width: bp.$lg) { 
+    max-width: bp.$lg-max-width;
+  }
+  @media screen and (min-width: bp.$xlg) {
+    max-width: bp.$xlg-max-width;
+  }
+}
