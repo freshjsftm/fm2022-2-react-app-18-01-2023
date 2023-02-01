@@ -24,13 +24,19 @@ class UsersLoader extends Component {
     this.setState((state, props) => ({ currentPage: state.currentPage + 1 }));
 
   load = () => {
-    const { currentPage:page } = this.state;
-    getUsers({page})
-      .then((data) =>
-        this.setState({
+    const { currentPage: page } = this.state;
+    getUsers({ page })
+      .then((data) => {
+        if(data.error){
+          return this.setState({
+            error: data,
+          })
+        }
+        return this.setState({
           users: data.results,
-        })
-      )
+          error: null,
+        });
+      })
       .catch((error) =>
         this.setState({
           error,
@@ -52,7 +58,7 @@ class UsersLoader extends Component {
     }
   }
 
-  mapUsers = ({gender,name,nat,login}) => (
+  mapUsers = ({ gender, name, nat, login }) => (
     <article key={login.uuid}>
       <h3>
         {name.first} {name.last}
@@ -60,7 +66,7 @@ class UsersLoader extends Component {
       <p>nat: {nat}</p>
       <p>gender: {gender}</p>
     </article>
-  )
+  );
 
   render() {
     const { users, error, isPending, currentPage } = this.state;
@@ -68,6 +74,7 @@ class UsersLoader extends Component {
       return <Spinner />;
     }
     if (error) {
+      console.log(error)
       return <Error404 />;
     }
     return (
