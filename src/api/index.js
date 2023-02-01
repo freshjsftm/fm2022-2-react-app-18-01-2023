@@ -1,3 +1,4 @@
+import queryString from 'query-string';
 /**
  *
  * @param {object} options
@@ -14,16 +15,13 @@ export const getUsers = (options = {}) => {
     results: 5,
     seed: "fm2022-2",
     nat: "gb",
-    inc:'gender,name,nat,login'
+    inc:'gender,name,nat,login',
   };
   const readyOptions = {
     ...defaultOptions,
     ...options,
   }
-  const { page, results, seed, nat, format, inc } = readyOptions;
   return fetch(
-    `https://randomuser.me/api/?results=${results}&seed=${seed}&page=${page}&nat=${nat}`
+    `https://randomuser.me/api/?${queryString.stringify(readyOptions)}`
   ).then((res) => res.json());
 };
-
-//currentPage = 1, results=5, seed='fm2022-2', nat="gb"
