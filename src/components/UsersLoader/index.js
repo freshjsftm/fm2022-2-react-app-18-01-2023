@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { getUsers } from "./../../api";
+import Spinner from "../Spinner";
+import Error404 from "../Error404";
 
 class UsersLoader extends Component {
   constructor(props) {
@@ -50,13 +52,23 @@ class UsersLoader extends Component {
     }
   }
 
+  mapUsers = ({gender,name,nat,login}) => (
+    <article key={login.uuid}>
+      <h3>
+        {name.first} {name.last}
+      </h3>
+      <p>nat: {nat}</p>
+      <p>gender: {gender}</p>
+    </article>
+  )
+
   render() {
     const { users, error, isPending, currentPage } = this.state;
     if (isPending) {
-      return <div>loading...</div>;
+      return <Spinner />;
     }
     if (error) {
-      return <div>ERROR!!!</div>;
+      return <Error404 />;
     }
     return (
       <section>
@@ -66,13 +78,7 @@ class UsersLoader extends Component {
           <button onClick={this.nextPage}>next &#9654;</button>
         </div>
         <h2>Users: </h2>
-        {users.map((user) => (
-          <article key={user.login.uuid}>
-            <h3>
-              {user.name.first} {user.name.last}
-            </h3>
-          </article>
-        ))}
+        {users.map(this.mapUsers)}
       </section>
     );
   }
