@@ -1,10 +1,10 @@
 import React from "react";
-import UsersLoader from "./components/UsersLoader";
+import WindowSize from "./components/WindowSize";
 
 function App(props) {
   return (
     <>
-    <UsersLoader />
+      <WindowSize />
     </>
   );
 }
