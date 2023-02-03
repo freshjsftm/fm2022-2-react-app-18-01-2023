@@ -26,3 +26,9 @@ export const getUsers = (options = {}) => {
     `${apiConfig.API_URL}/?${queryString.stringify(readyOptions)}`
   ).then((res) => res.json());
 };
+
+export const loadUsers = () =>
+  fetch("/data/users.json").then((res) => res.json());
+
+export const loadPhones = () =>
+  fetch("/data/phones.json").then((res) => res.json());
