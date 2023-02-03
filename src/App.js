@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
+import CounterPage from "./pages/CounterPage";
 import WindowSize from './components/WindowSize';
 import SignInForm from './components/forms/SignInForm';
 import StopWatch from './components/StopWatch';
@@ -17,7 +18,7 @@ function App(props) {
             <li><NavLink to="/stop-watch">StopWatch</NavLink></li>
             <li><NavLink to="/dash-board">Dashboard</NavLink>
               <ul>
-                <li><NavLink to="/dash-board/messages">messages</NavLink></li>
+                <li><NavLink to="/dash-board/counter">counter</NavLink></li>
                 <li><NavLink to="/dash-board/tasks">tasks</NavLink></li>
                 <li><NavLink to="/dash-board/users">users</NavLink></li>
               </ul>
@@ -29,29 +30,13 @@ function App(props) {
           <Route path="/sign-in" element={<SignInForm />} />
           <Route path="/stop-watch" element={<StopWatch />} />
           <Route path='/dash-board/' element={<Dashboard />}>
-            <Route path="messages" element={<h2>messages</h2>} />
+            <Route path="counter" element={<CounterPage />} />
             <Route path="tasks" element={<h2>tasks</h2>} />
             <Route path="users" element={<h2>users</h2>} />
           </Route>
-
           <Route path="*" element={<Error404 />} />
         </Routes>
-
         <footer>
-          <nav>
-            <ul>
-              <li><NavLink to="/">HOME</NavLink></li>
-              <li><NavLink to="/sign-in">sign-in</NavLink></li>
-              <li><NavLink to="/stop-watch">StopWatch</NavLink></li>
-              <li><NavLink to="/dash-board">Dashboard</NavLink>
-                <ul>
-                  <li><NavLink to="/dash-board/messages">messages</NavLink></li>
-                  <li><NavLink to="/dash-board/tasks">tasks</NavLink></li>
-                  <li><NavLink to="/dash-board/users">users</NavLink></li>
-                </ul>
-              </li>
-            </ul>
-          </nav>
           <p>&copy; 2023</p>
         </footer>
       </BrowserRouter>
