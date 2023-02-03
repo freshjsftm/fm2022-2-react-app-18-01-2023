@@ -1,0 +1,32 @@
+[
+  {
+    "id":1,
+    "name":"Sony Experia",
+    "brand": "Sony",
+    "price": 500
+  },
+  {
+    "id":2,
+    "name":"Nokia 12",
+    "brand": "Nokia",
+    "price": 200
+  },
+  {
+    "id":3,
+    "name":"Iphone 13",
+    "brand": "Iphone",
+    "price": 900
+  },
+  {
+    "id":4,
+    "name":"Fly 03",
+    "brand": "Fly",
+    "price": 450
+  },
+  {
+    "id":5,
+    "name":"Fly 07",
+    "brand": "Fly",
+    "price": 200
+  }
+]

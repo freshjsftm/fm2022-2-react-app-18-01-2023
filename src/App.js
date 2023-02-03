@@ -2,10 +2,13 @@ import React from "react";
 import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import CounterPage from "./pages/CounterPage";
+import LoaderPage from './pages/LoaderPage';
 import WindowSize from './components/WindowSize';
 import SignInForm from './components/forms/SignInForm';
 import StopWatch from './components/StopWatch';
 import Error404 from './components/Error404';
+import LoaderUsers from "./components/LoaderUsers";
+import LoaderPhones from "./components/LoaderPhones";
 
 function App(props) {
   return (
@@ -19,8 +22,12 @@ function App(props) {
             <li><NavLink to="/dash-board">Dashboard</NavLink>
               <ul>
                 <li><NavLink to="/dash-board/counter">counter</NavLink></li>
-                <li><NavLink to="/dash-board/tasks">tasks</NavLink></li>
-                <li><NavLink to="/dash-board/users">users</NavLink></li>
+                <li>loader
+                  <ul>
+                  <li><NavLink to="/dash-board/loader/users">users</NavLink></li>
+                  <li><NavLink to="/dash-board/loader/phones">phones</NavLink></li>
+                  </ul>
+                </li>
               </ul>
             </li>
           </ul>
@@ -31,8 +38,10 @@ function App(props) {
           <Route path="/stop-watch" element={<StopWatch />} />
           <Route path='/dash-board/' element={<Dashboard />}>
             <Route path="counter" element={<CounterPage />} />
-            <Route path="tasks" element={<h2>tasks</h2>} />
-            <Route path="users" element={<h2>users</h2>} />
+            <Route path="loader/" element={<LoaderPage />} >
+              <Route path="users" element={<LoaderUsers />}/>
+              <Route path="phones" element={<LoaderPhones />}/>
+            </Route>
           </Route>
           <Route path="*" element={<Error404 />} />
         </Routes>
