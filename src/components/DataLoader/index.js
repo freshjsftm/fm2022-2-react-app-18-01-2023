@@ -26,17 +26,19 @@ class DataLoader extends Component {
   }
 
   render() {
-    const { render } = this.props;
+    //const { render } = this.props;
+    const { children } = this.props;
     const { error, isPending } = this.state;
     if(isPending){return <Spinner />}
     if(error){return <Error404 />}
-    return render(this.state);
+    //return render(this.state);
+    return children(this.state);
   }
 }
 
 DataLoader.propTypes = {
   loadData: PropTypes.func.isRequired,
-  render: PropTypes.func.isRequired,
+  //render: PropTypes.func.isRequired,
 };
 
 export default DataLoader;

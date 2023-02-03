@@ -6,7 +6,7 @@ class LoaderPage extends Component {
   render() {
     return (
       <>
-        <DataLoader
+        {/* <DataLoader
           loadData={loadPhones}
           render={(state) => (
             <ul>
@@ -17,17 +17,27 @@ class LoaderPage extends Component {
               ))}
             </ul>
           )}
-        />
-        <DataLoader
-          loadData={loadUsers}
-          render={(state) => (
+        /> */}
+        <DataLoader loadData={loadPhones}>
+          {(state) => (
+            <ul>
+              {state.data.map((phone) => (
+                <li key={phone.id}>
+                  {phone.brand}, price:{phone.price}
+                </li>
+              ))}
+            </ul>
+          )}
+        </DataLoader>
+        <DataLoader loadData={loadUsers}>
+          {(state) => (
             <ol>
               {state.data.map((user) => (
                 <li key={user.id}> {user.name}</li>
               ))}
             </ol>
           )}
-        />
+        </DataLoader>
       </>
     );
   }
