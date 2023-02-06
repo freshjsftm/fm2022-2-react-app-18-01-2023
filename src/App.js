@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import Tree from "./components/Tree";
+import Header from "./components/Header";
+import Parent from "./components/Parent";
 import { UserContext } from "./contexts";
-// створити контекст
-// надати доступ усім компонентам до контекста
-// дістати данні з контексту
+
 
 class App extends Component {
   constructor(props) {
@@ -14,13 +13,12 @@ class App extends Component {
   }
   render() {
     const {user} = this.state;
-    console.log(UserContext);
     return (
       <UserContext.Provider value={user}>
-        <Tree />
+        <Header />
+        <Parent />
       </UserContext.Provider>
     );
   }
 }
-
 export default App;
