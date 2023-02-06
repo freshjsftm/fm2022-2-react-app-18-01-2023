@@ -1,0 +1,18 @@
+@use 'src/common/styles/template' as t;
+.header{
+  display: flex;
+  justify-content: end;
+  padding: 1em;
+  > *{
+    margin-left: 30px;
+  }
+  .theme{
+    cursor: pointer;
+  }
+}
+.light{
+  @extend .light;
+}
+.dark{
+  @extend .dark;
+}

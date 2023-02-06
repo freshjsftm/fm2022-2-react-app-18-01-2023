@@ -1,0 +1,8 @@
+@use 'src/common/styles/template' as t;
+
+.light{
+  @extend .light;
+}
+.dark{
+  @extend .dark;
+}
