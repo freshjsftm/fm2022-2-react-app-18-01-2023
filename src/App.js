@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Parent from "./components/Parent";
 import { UserContext, ThemeContext } from "./contexts";
 import CONSTANTS from "./constants";
+import Footer from "./components/Footer";
 const { THEMES } = CONSTANTS;
 
 class App extends Component {
@@ -21,6 +22,7 @@ class App extends Component {
         <UserContext.Provider value={user}>
           <Header />
           <Parent />
+          <Footer />
         </UserContext.Provider>
       </ThemeContext.Provider>
     );
