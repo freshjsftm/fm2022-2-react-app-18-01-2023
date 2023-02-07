@@ -1,4 +1,4 @@
-@use 'src/common/styles/template' as t;
+@use 'src/common/styles/template' as *;
 .header{
   display: flex;
   justify-content: end;
