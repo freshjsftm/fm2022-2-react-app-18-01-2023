@@ -17,7 +17,7 @@ class SignInForm extends Component {
   }
   formHandler = (event) => {
     event.preventDefault();
-    console.log(this.state);
+    console.log(this.state); //
     event.target.reset();
     this.setState({ ...initialValues });
   };
