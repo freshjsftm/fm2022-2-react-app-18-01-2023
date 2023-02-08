@@ -1,0 +1,29 @@
+@use 'src/common/styles/color' as color;
+.form{
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: auto;
+  padding: 0.5em;
+  background-color: color.$main-color;
+}
+.label{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.7em;
+  position: relative;
+  input{
+    padding: 0.5em;
+    color: color.$main-color;
+  }
+  span {
+    position: absolute;
+    top: 40%;
+    left: 20%;
+    z-index: 3;
+    padding: 0.3em;
+    border: 1px solid red;
+    background-color:rgb(251, 219, 224);
+    color:red;
+  }
+}

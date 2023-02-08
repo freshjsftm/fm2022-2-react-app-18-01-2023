@@ -1,6 +1,8 @@
 import React from "react";
-import { Field, Form, Formik, ErrorMessage } from "formik";
+import { Form, Formik } from "formik";
 import { LOG_IN_SCHEMA } from "../../../utils/validationSchemas";
+import InputWrapper from "../InputWrapper";
+import styles from "./LogInForm.module.scss";
 const initialValues = {
   login: "",
   password: "",
@@ -22,12 +24,18 @@ const LogInForm = (props) => {
       {(formikProps) => {
         //console.log(formikProps);
         return (
-          <Form>
-            <Field name="login" placeholder="login" />
-            <ErrorMessage name="login" component="div" />
-            <Field name="password" type="password" placeholder="password" />
-            <ErrorMessage name="password" component="div" />
-            <Field type="submit" value="SEND" />
+          <Form className={styles.form}>
+            <InputWrapper
+              name="login"
+              placeholder="your login"
+              className={styles.label}
+            />
+            <InputWrapper
+              name="password"
+              placeholder="your password"
+              className={styles.label}
+            />
+            <input type="submit" value="SEND" />
           </Form>
         );
       }}
