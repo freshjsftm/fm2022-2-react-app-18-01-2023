@@ -2,10 +2,13 @@ import React from "react";
 import { Form, Formik } from "formik";
 import { LOG_IN_SCHEMA } from "../../../utils/validationSchemas";
 import InputWrapper from "../InputWrapper";
+import InputWrapperWithValidate from "../InputWrapperWithValidate";
 import styles from "./LogInForm.module.scss";
+
 const initialValues = {
   login: "",
   password: "",
+  number: 1,
 };
 const LogInForm = (props) => {
   const onSubmit = (values, formikBag) => {
@@ -25,13 +28,22 @@ const LogInForm = (props) => {
         //console.log(formikProps);
         return (
           <Form className={styles.form}>
-            <InputWrapper
+            <InputWrapperWithValidate
               name="login"
+              type="text"
               placeholder="your login"
+              className={styles.labelValid}
+            />
+            <InputWrapper
+              name="number"
+              type="number"
+              step="5"
+              placeholder="your number"
               className={styles.label}
             />
             <InputWrapper
               name="password"
+              type="password"
               placeholder="your password"
               className={styles.label}
             />
