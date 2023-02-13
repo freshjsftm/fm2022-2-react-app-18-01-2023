@@ -1,24 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const LearnHooks = (props) => {
-  const [coords, setCoords] = useState({
-    x: 0,
-    y: 0
-  });
   const [count, setCount] = useState(0);
-  const handlerMove = (event) => {
-    setCoords({
-      x: event.clientX,
-      y: event.clientY,
-    });
-  };
-  const handlerClick = ()=>{setCount((prevCount)=>prevCount+1)}
+
+  useEffect(() => {
+    const handlerClick = () => {
+      setCount((prevCount) => prevCount + 1);
+      //setCount(count + 1); //- так не працює!!!
+    };
+    //add effect componentDidMount []
+    console.log("add effect");
+    document.body.addEventListener("click", handlerClick);
+    return () => {
+      //clean effect componentWillUnmount []
+      console.log("clean effect");
+      document.body.removeEventListener("click", handlerClick);
+    }; // eslint-disable-next-line
+  }, []);
+
   return (
-    <div style={{ height: "95vh" }} onMouseMove={handlerMove} onClick={handlerClick}>
-      <p>x: {coords.x}</p>
-      <p>y: {coords.y}</p>
+    <div>
       <p>count: {count}</p>
     </div>
   );
 };
+
 export default LearnHooks;
