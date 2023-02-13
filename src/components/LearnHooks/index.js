@@ -1,26 +1,24 @@
 import React, { useState } from "react";
 
 const LearnHooks = (props) => {
-  const [state, setState] = useState({
+  const [coords, setCoords] = useState({
     x: 0,
-    y: 0,
-    count:0
+    y: 0
   });
+  const [count, setCount] = useState(0);
   const handlerMove = (event) => {
-    setState({
-      ...state,
+    setCoords({
       x: event.clientX,
       y: event.clientY,
     });
   };
-  const handlerClick = ()=>{setState({...state,count:state.count+1})}
+  const handlerClick = ()=>{setCount((prevCount)=>prevCount+1)}
   return (
     <div style={{ height: "95vh" }} onMouseMove={handlerMove} onClick={handlerClick}>
-      <p>x: {state.x}</p>
-      <p>y: {state.y}</p>
-      <p>count: {state.count}</p>
+      <p>x: {coords.x}</p>
+      <p>y: {coords.y}</p>
+      <p>count: {count}</p>
     </div>
   );
 };
-
 export default LearnHooks;
