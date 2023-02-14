@@ -1,16 +1,21 @@
 import React, { useState } from "react";
-import FuncStopWatch from "./components/FuncStopWatch";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import UserProfile from "./components/UserProfile";
+import { UserContext } from "./contexts";
 
 function App() {
-  const [isVisible, setIsVisible] = useState(true);
-  const handlerIsVisible = () => {
-    setIsVisible(!isVisible);
-  };
+  const [user, setUser] = useState({
+    id: 1,
+    name: "Brad Pitt",
+  });
   return (
-    <>
-      <button onClick={handlerIsVisible}>swich visible</button>
-      {isVisible && <FuncStopWatch />}
-    </>
+    <UserContext.Provider value={[user, setUser]}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<UserProfile />} />
+        </Routes>
+      </BrowserRouter>
+    </UserContext.Provider>
   );
 }
 export default App;
