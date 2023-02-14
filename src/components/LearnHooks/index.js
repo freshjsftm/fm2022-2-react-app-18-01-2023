@@ -2,25 +2,23 @@ import React, { useState, useEffect } from "react";
 
 const LearnHooks = (props) => {
   const [count, setCount] = useState(0);
-
+  const [step, setStep] = useState(100);
+  const handlerStep = ({ target: { value } }) => {
+    setStep(Number(value));
+  };
   useEffect(() => {
     const handlerClick = () => {
-      setCount((prevCount) => prevCount + 1);
-      //setCount(count + 1); //- так не працює!!!
+      setCount((count) => count + step);
     };
-    //add effect componentDidMount []
-    console.log("add effect");
     document.body.addEventListener("click", handlerClick);
     return () => {
-      //clean effect componentWillUnmount []
-      console.log("clean effect");
       document.body.removeEventListener("click", handlerClick);
     }; // eslint-disable-next-line
-  }, []);
-
+  }, [step]);
   return (
     <div>
       <p>count: {count}</p>
+      <input type="number" value={step} onChange={handlerStep} />
     </div>
   );
 };
