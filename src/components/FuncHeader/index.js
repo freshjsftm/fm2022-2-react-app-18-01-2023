@@ -17,9 +17,12 @@ const FuncHeader = () => {
     [styles.light]: theme === THEMES.LIGHT,
     [styles.dark]: theme === THEMES.DARK,
   });
+  const styleMap = {
+    textTransform: 'uppercase',
+  }
   return (
     <header className={classNames}>
-      <strong>hi,{user.name}</strong>
+      <strong style={styleMap}>hi, {user.name}</strong>
       <span onClick={handlerTheme}>
         {theme === THEMES.LIGHT ? <DarkMode /> : <WbSunny />}
       </span>

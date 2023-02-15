@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import FuncHeader from "./components/FuncHeader";
-import UserProfile from "./components/UserProfile";
+import HomePage from "./pages/HomePage";
 import { UserContext, ThemeContext } from "./contexts";
 import CONSTANTS from "./constants";
 const { THEMES } = CONSTANTS;
+
 function App() {
   const [user, setUser] = useState({
     id: 1,
@@ -17,7 +18,7 @@ function App() {
         <BrowserRouter>
           <FuncHeader />
           <Routes>
-            <Route path="/" element={<UserProfile />} />
+            <Route path="/" element={<HomePage />} />
           </Routes>
         </BrowserRouter>
       </UserContext.Provider>
