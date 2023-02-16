@@ -4,6 +4,7 @@ import FuncHeader from "./components/FuncHeader";
 import HomePage from "./pages/HomePage";
 import { UserContext, ThemeContext } from "./contexts";
 import CONSTANTS from "./constants";
+import { useClicker } from "./hooks";
 const { THEMES } = CONSTANTS;
 
 function App() {
@@ -12,11 +13,13 @@ function App() {
     name: "Brad Pitt",
   });
   const [theme, setTheme] = useState(THEMES.LIGHT);
+  const count = useClicker(1000);
   return (
     <ThemeContext.Provider value={[theme, setTheme]}>
       <UserContext.Provider value={[user, setUser]}>
         <BrowserRouter>
           <FuncHeader />
+          <h2>Count click at window = {count}</h2>
           <Routes>
             <Route path="/" element={<HomePage />} />
           </Routes>
