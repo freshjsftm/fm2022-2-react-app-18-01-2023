@@ -1,0 +1,33 @@
+{
+  "messages": [
+    {
+      "id": 1,
+      "body": "hi!",
+      "authorId": 11
+    },
+    {
+      "id": 2,
+      "body": "hellow!",
+      "authorId": 3
+    },
+    {
+      "id": 3,
+      "body": "hi-hi",
+      "authorId": 11
+    }
+  ],
+  "users": [
+    {
+      "id": 11,
+      "name": "Tom"
+    },
+    {
+      "id": 24,
+      "name": "Neo"
+    },
+    {
+      "id": 3,
+      "name": "Brad"
+    }
+  ]
+}

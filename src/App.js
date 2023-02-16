@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
-import FuncHeader from "./components/FuncHeader";
-import HomePage from "./pages/HomePage";
 import { UserContext, ThemeContext } from "./contexts";
-import CONSTANTS from "./constants";
-import { useClicker } from "./hooks";
+import FuncHeader from "./components/FuncHeader";
 import SignUpForm from "./components/forms/SignUpForm";
+import Chat from "./components/Chat";
+import HomePage from "./pages/HomePage";
+import { useClicker } from "./hooks";
+import CONSTANTS from "./constants";
 const { THEMES } = CONSTANTS;
 
 function App() {
@@ -29,11 +30,15 @@ function App() {
               <li>
                 <NavLink to="/signup">signup</NavLink>
               </li>
+              <li>
+                <NavLink to="/chat">chat</NavLink>
+              </li>
             </ul>
           </nav>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/signup" element={<SignUpForm />} />
+            <Route path="/chat" element={<Chat />} />
           </Routes>
         </BrowserRouter>
       </UserContext.Provider>
