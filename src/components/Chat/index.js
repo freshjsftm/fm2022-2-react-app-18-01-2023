@@ -1,45 +1,27 @@
 import React, { useReducer, useEffect } from "react";
-
-const reducer = (state, action) => {
-  const {type,data: { messages, users }} = action;
-  switch (type) {
-    case "DATA_RESPONSE_SUCCESS": {
-      const usersMap = new Map();
-      // ключ - ідентифікатор юзера
-      // значення - копія адреси юзера
-      users.forEach((user) => usersMap.set(user.id, user));
-      //console.log(usersMap)
-      const messagesWithAuthor = messages.map((msg)=>{
-        const msgWithAuthor = {
-          ...msg,
-          author: usersMap.get(msg.authorId) //копія адреси юзера
-        }
-        //console.log(msgWithAuthor)
-        return msgWithAuthor;
-      })
-      const newState = {
-        ...state,
-        users,
-        messages:messagesWithAuthor
-      };
-      return newState;
-    }
-    default:
-      return state;
-  }
-};
-
-const loadChat = () =>
-  fetch("/data/chat.json").then((response) => response.json());
+import { loadChat } from "../../api";
+import TYPE_ACTIONS from "./constants";
+import reducer from "./reducer";
 
 const Chat = () => {
-  const [state, dispatch] = useReducer(reducer, { messages: [], users: [] });
+  const [state, dispatch] = useReducer(reducer, {
+    messages: [],
+    users: [],
+    error: null,
+    isPending: false,
+  });
   useEffect(() => {
-    loadChat().then((data) => {
-      const action = { data, type: "DATA_RESPONSE_SUCCESS" };
-      return dispatch(action);
-    });
+    loadChat()
+      .then((data) =>
+        dispatch({ data, type: TYPE_ACTIONS.DATA_RESPONSE_SUCCESS })
+      )
+      .catch((error) =>
+        dispatch({ error, type: TYPE_ACTIONS.DATA_RESPONSE_ERROR })
+      );
   }, []);
+  if (state.error) {
+    return <div>404</div>;
+  }
   return (
     <section>
       <h2>Chat</h2>
@@ -54,6 +36,3 @@ const Chat = () => {
 };
 
 export default Chat;
-
-
-

@@ -32,3 +32,6 @@ export const loadUsers = () =>
 
 export const loadPhones = () =>
   fetch("/data/phones.json").then((res) => res.json());
+
+export const loadChat = () =>
+  fetch("/data/chat.json").then((response) => response.json());
