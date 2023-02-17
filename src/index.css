@@ -9,3 +9,10 @@ body {
 .false {
   display: none;
 }
+a{
+  color:inherit;
+  text-decoration: none;
+}
+ul,ol{
+  list-style: none;
+}
