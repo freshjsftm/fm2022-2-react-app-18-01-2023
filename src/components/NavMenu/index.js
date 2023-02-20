@@ -5,24 +5,24 @@ import { CancelPresentation } from "@mui/icons-material";
 import styles from "./NavMenu.module.scss";
 import { MenuContext } from "../../contexts";
 
-const NavMenu = () => {
+const NavMenu = (props) => {
   const [state, closeMenu] = useContext(MenuContext);
   const classNames = cx(styles.container, {
     [styles.open]: state.isMenuOpen,
   });
-  const navMenuRef = useRef(null);
-  useEffect(() => {
-    const handlerClick = ({ target }) => {
-      if (navMenuRef.current.contains(target) === false && state.isMenuOpen) {
-        closeMenu();
-      }
-    };
-    window.addEventListener("click", handlerClick);
-    return () => window.removeEventListener("click", handlerClick);
-    // eslint-disable-next-line
-  }, [state.isMenuOpen]);
+  //const navMenuRef = useRef(null);
+  // useEffect(() => {
+  //   const handlerClick = ({ target }) => {
+  //     if (navMenuRef.current.contains(target) === false && state.isMenuOpen) {
+  //       closeMenu();
+  //     }
+  //   };
+  //   window.addEventListener("click", handlerClick);
+  //   return () => window.removeEventListener("click", handlerClick);
+  //   // eslint-disable-next-line
+  // }, [state.isMenuOpen]);
   return (
-    <nav className={classNames} ref={navMenuRef}>
+    <nav className={classNames} ref={props.navMenuRef}>
       <CancelPresentation className={styles.closeBtn} onClick={closeMenu} />
       <ul>
         <li>

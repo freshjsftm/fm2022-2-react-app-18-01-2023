@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from "react";
+import React, { useState, useReducer, createRef, useEffect } from "react";
 import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
 import { MenuOpen } from "@mui/icons-material";
 import { UserContext, ThemeContext, MenuContext } from "./contexts";
@@ -41,13 +41,26 @@ function App() {
     return dispatch({ type: "MENU_OPEN" });
   };
   const closeMenu = () => dispatch({ type: "MENU_CLOSE" });
+    
+  const navMenuRef = createRef();
+  useEffect(() => {
+    const handlerClick = ({ target }) => {
+      if (navMenuRef.current.contains(target) === false && state.isMenuOpen) {
+        closeMenu();
+      }
+    };
+    window.addEventListener("click", handlerClick);
+    return () => window.removeEventListener("click", handlerClick);
+    // eslint-disable-next-line
+  }, [state.isMenuOpen]);
+
   return (
     <MenuContext.Provider value={[state, closeMenu]}>
       <ThemeContext.Provider value={[theme, setTheme]}>
         <UserContext.Provider value={[user, setUser]}>
           <BrowserRouter>
             <MenuOpen onClick={openMenu} />
-            <NavMenu />
+            <NavMenu navMenuRef={navMenuRef}/>
             <FuncHeader />
             <h2>Count click at window = {count}</h2>
             <nav>
