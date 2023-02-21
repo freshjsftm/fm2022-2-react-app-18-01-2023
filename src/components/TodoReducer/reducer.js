@@ -24,6 +24,13 @@ const reducer = (state, action) => {
         ),
       };
     }
+    case "SET_MODE":{
+      const {payload:value} = action;
+      return {
+        ...state,
+        mode: value
+      }
+    }
     default:
       return state;
   }
